@@ -152,11 +152,12 @@ Latest, but maybe unstable version:
 
 ## Configuration
 
-- by default go2rtc will search `go2rtc.yaml` in the current work dirrectory
+- by default go2rtc will search `go2rtc.yaml` in the current work directory
 - `api` server will start on default **1984 port** (TCP)
 - `rtsp` server will start on default **8554 port** (TCP)
 - `webrtc` will use port **8555** (TCP/UDP) for connections
 - `ffmpeg` will use default transcoding options
+- `exec` will use **SIGKILL** to kill the exec command
 
 Configuration options and a complete list of settings can be found in [the wiki](https://github.com/AlexxIT/go2rtc/wiki/Configuration).
 
@@ -417,6 +418,15 @@ streams:
   stream: exec:ffmpeg -re -i /media/BigBuckBunny.mp4 -c copy -rtsp_transport tcp -f rtsp {output}
   picam_h264: exec:libcamera-vid -t 0 --inline -o -
   picam_mjpeg: exec:libcamera-vid -t 0 --codec mjpeg -o -
+```
+
+You can change the signal which is used to kill the exec command in the config.
+See `man 7 signal` to get a full list of all the signals.
+The value is case insensitive.
+
+```yaml
+exec:
+  signal: sigkill
 ```
 
 #### Source: Echo
