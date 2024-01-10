@@ -26,5 +26,5 @@ type pipeCloser struct {
 }
 
 func (p pipeCloser) Close() error {
-	return core.Any(p.Closer.Close(), p.cmd.Process.Kill(), p.cmd.Wait())
+	return core.Any(p.Closer.Close(), p.cmd.Process.Signal(killSignal), p.cmd.Wait())
 }
