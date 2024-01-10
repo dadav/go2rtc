@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 	"sync"
 	"syscall"
 	"time"
@@ -22,42 +23,41 @@ import (
 )
 
 func parseSignal(signalString string) (os.Signal, error) {
-	// Map signal names to os.Signal values
 	signalMap := map[string]os.Signal{
-		"SIGHUP":    syscall.SIGHUP,
-		"SIGINT":    syscall.SIGINT,
-		"SIGQUIT":   syscall.SIGQUIT,
-		"SIGILL":    syscall.SIGILL,
-		"SIGTRAP":   syscall.SIGTRAP,
-		"SIGABRT":   syscall.SIGABRT,
-		"SIGBUS":    syscall.SIGBUS,
-		"SIGFPE":    syscall.SIGFPE,
-		"SIGKILL":   syscall.SIGKILL,
-		"SIGUSR1":   syscall.SIGUSR1,
-		"SIGSEGV":   syscall.SIGSEGV,
-		"SIGUSR2":   syscall.SIGUSR2,
-		"SIGPIPE":   syscall.SIGPIPE,
-		"SIGALRM":   syscall.SIGALRM,
-		"SIGTERM":   syscall.SIGTERM,
-		"SIGCHLD":   syscall.SIGCHLD,
-		"SIGCONT":   syscall.SIGCONT,
-		"SIGSTOP":   syscall.SIGSTOP,
-		"SIGTSTP":   syscall.SIGTSTP,
-		"SIGTTIN":   syscall.SIGTTIN,
-		"SIGTTOU":   syscall.SIGTTOU,
-		"SIGURG":    syscall.SIGURG,
-		"SIGXCPU":   syscall.SIGXCPU,
-		"SIGXFSZ":   syscall.SIGXFSZ,
-		"SIGVTALRM": syscall.SIGVTALRM,
-		"SIGPROF":   syscall.SIGPROF,
-		"SIGWINCH":  syscall.SIGWINCH,
-		"SIGIO":     syscall.SIGIO,
-		"SIGPOLL":   syscall.SIGPOLL,
-		"SIGPWR":    syscall.SIGPWR,
-		"SIGSYS":    syscall.SIGSYS,
+		"sighup":    syscall.SIGHUP,
+		"sigint":    syscall.SIGINT,
+		"sigquit":   syscall.SIGQUIT,
+		"sigill":    syscall.SIGILL,
+		"sigtrap":   syscall.SIGTRAP,
+		"sigabrt":   syscall.SIGABRT,
+		"sigbus":    syscall.SIGBUS,
+		"sigfpe":    syscall.SIGFPE,
+		"sigkill":   syscall.SIGKILL,
+		"sigusr1":   syscall.SIGUSR1,
+		"sigsegv":   syscall.SIGSEGV,
+		"sigusr2":   syscall.SIGUSR2,
+		"sigpipe":   syscall.SIGPIPE,
+		"sigalrm":   syscall.SIGALRM,
+		"sigterm":   syscall.SIGTERM,
+		"sigchld":   syscall.SIGCHLD,
+		"sigcont":   syscall.SIGCONT,
+		"sigstop":   syscall.SIGSTOP,
+		"sigtstp":   syscall.SIGTSTP,
+		"sigttin":   syscall.SIGTTIN,
+		"sigttou":   syscall.SIGTTOU,
+		"sigurg":    syscall.SIGURG,
+		"sigxcpu":   syscall.SIGXCPU,
+		"sigxfsz":   syscall.SIGXFSZ,
+		"sigvtalrm": syscall.SIGVTALRM,
+		"sigprof":   syscall.SIGPROF,
+		"sigwinch":  syscall.SIGWINCH,
+		"sigio":     syscall.SIGIO,
+		"sigpoll":   syscall.SIGPOLL,
+		"sigpwr":    syscall.SIGPWR,
+		"sigsys":    syscall.SIGSYS,
 	}
 
-	signalValue, ok := signalMap[signalString]
+	signalValue, ok := signalMap[strings.ToLower(signalString)]
 	if !ok {
 		return nil, fmt.Errorf("invalid signal: %s", signalString)
 	}
@@ -66,7 +66,7 @@ func parseSignal(signalString string) (os.Signal, error) {
 }
 
 var defaults = map[string]string{
-	"signal": "SIGKILL",
+	"signal": "sigkill",
 }
 
 func Init() {
