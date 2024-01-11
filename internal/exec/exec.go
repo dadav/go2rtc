@@ -5,8 +5,10 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"net/url"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 	"sync"
 	"syscall"
@@ -21,6 +23,43 @@ import (
 	"github.com/AlexxIT/go2rtc/pkg/shell"
 	"github.com/rs/zerolog"
 )
+
+type Params struct {
+	KillSignal  os.Signal
+	Command     string
+	KillTimeout time.Duration
+}
+
+func parseParams(s string) *Params {
+	args := &Params{
+		KillSignal:  syscall.SIGKILL,
+		KillTimeout: 5 * time.Second,
+		Command:     s,
+	}
+
+	var query url.Values
+	if i := strings.IndexByte(s, '#'); i > 0 {
+		query = streams.ParseQuery(s[i+1:])
+		args.Command = s[:i]
+	}
+
+	if val, ok := query["killsignal"]; ok {
+		if sig, err := parseSignal(val[0]); err == nil {
+			args.KillSignal = sig
+		} else {
+			log.Error().Err(err).Str("signal", val[0]).Msg("[exec] bad value")
+			panic(err)
+		}
+	}
+
+	if val, ok := query["killtimeout"]; ok {
+		if i, err := strconv.Atoi(val[0]); err == nil {
+			args.KillTimeout = time.Duration(i) * time.Second
+		}
+	}
+
+	return args
+}
 
 func parseSignal(signalString string) (os.Signal, error) {
 	signalMap := map[string]os.Signal{
@@ -65,27 +104,7 @@ func parseSignal(signalString string) (os.Signal, error) {
 	return signalValue, nil
 }
 
-var defaults = map[string]string{
-	"signal": "sigkill",
-}
-
 func Init() {
-	var cfg struct {
-		Mod map[string]string `yaml:"exec"`
-	}
-
-	cfg.Mod = defaults // will be overriden from yaml
-
-	app.LoadConfig(&cfg)
-
-	s, err := parseSignal(defaults["signal"])
-	if err != nil {
-		log.Error().Err(err).Str("signal", defaults["signal"]).Msg("[exec] bad value")
-		panic(err)
-	}
-
-	killSignal = s
-
 	rtsp.HandleFunc(func(conn *pkg.Conn) bool {
 		waitersMu.Lock()
 		waiter := waiters[conn.URL.Path]
@@ -112,7 +131,8 @@ func Init() {
 func execHandle(url string) (core.Producer, error) {
 	var path string
 
-	args := shell.QuoteSplit(url[5:]) // remove `exec:`
+	params := parseParams(url)
+	args := shell.QuoteSplit(params.Command[5:]) // remove `exec:`
 	for i, arg := range args {
 		if arg == "{output}" {
 			if rtsp.Port == "" {
@@ -132,14 +152,14 @@ func execHandle(url string) (core.Producer, error) {
 	}
 
 	if path == "" {
-		return handlePipe(url, cmd)
+		return handlePipe(url, cmd, params)
 	}
 
 	return handleRTSP(url, path, cmd)
 }
 
-func handlePipe(url string, cmd *exec.Cmd) (core.Producer, error) {
-	r, err := PipeCloser(cmd)
+func handlePipe(_ string, cmd *exec.Cmd, params *Params) (core.Producer, error) {
+	r, err := PipeCloser(cmd, params)
 	if err != nil {
 		return nil, err
 	}
@@ -210,8 +230,7 @@ func handleRTSP(url, path string, cmd *exec.Cmd) (core.Producer, error) {
 // internal
 
 var (
-	log        zerolog.Logger
-	waiters    = map[string]chan core.Producer{}
-	waitersMu  sync.Mutex
-	killSignal os.Signal
+	log       zerolog.Logger
+	waiters   = map[string]chan core.Producer{}
+	waitersMu sync.Mutex
 )
