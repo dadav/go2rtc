@@ -30,7 +30,7 @@ type Params struct {
 	KillTimeout time.Duration
 }
 
-func parseParams(s string) *Params {
+func parseParams(s string) (*Params, error) {
 	args := &Params{
 		KillSignal:  syscall.SIGKILL,
 		KillTimeout: 5 * time.Second,
@@ -47,18 +47,19 @@ func parseParams(s string) *Params {
 		if sig, err := parseSignal(val[0]); err == nil {
 			args.KillSignal = sig
 		} else {
-			log.Error().Err(err).Str("signal", val[0]).Msg("[exec] bad value")
-			panic(err)
+			return nil, fmt.Errorf("could not parse killsignal param (%s)", val[0])
 		}
 	}
 
 	if val, ok := query["killtimeout"]; ok {
 		if i, err := strconv.Atoi(val[0]); err == nil {
 			args.KillTimeout = time.Duration(i) * time.Second
+		} else {
+			return nil, fmt.Errorf("could not convert killtimeout param (%s) to int", val[0])
 		}
 	}
 
-	return args
+	return args, nil
 }
 
 func parseSignal(signalString string) (os.Signal, error) {
@@ -131,7 +132,11 @@ func Init() {
 func execHandle(url string) (core.Producer, error) {
 	var path string
 
-	params := parseParams(url)
+	params, err := parseParams(url)
+	if err != nil {
+		return nil, err
+	}
+
 	args := shell.QuoteSplit(params.Command[5:]) // remove `exec:`
 	for i, arg := range args {
 		if arg == "{output}" {
