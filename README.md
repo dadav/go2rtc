@@ -157,7 +157,6 @@ Latest, but maybe unstable version:
 - `rtsp` server will start on default **8554 port** (TCP)
 - `webrtc` will use port **8555** (TCP/UDP) for connections
 - `ffmpeg` will use default transcoding options
-- `exec` will use **SIGKILL** to kill the exec command
 
 Configuration options and a complete list of settings can be found in [the wiki](https://github.com/AlexxIT/go2rtc/wiki/Configuration).
 
@@ -406,6 +405,16 @@ If you want to use **RTSP** transport - the command must contain the `{output}` 
 
 **pipe** reads data from app stdout in different formats: **MJPEG**, **H.264/H.265 bitstream**, **MPEG-TS**.
 
+Pipe commands support two parameters:
+
+- **killsignal**: Signal which will be send to stop the process (default: sigkill)
+- **killtimeout**: Time in seconds after the process will killed with sigkill (default: 5)
+
+The **killtimeout** parameter is only relevant if **killsignal** is not sigkill.
+See `man 7 signal` to get a full list of all the signals.
+
+Format: `exec:{command}#{param1}#{param2}`
+
 The source can be used with:
 
 - [FFmpeg](https://ffmpeg.org/) - go2rtc ffmpeg source just a shortcut to exec source
@@ -418,15 +427,7 @@ streams:
   stream: exec:ffmpeg -re -i /media/BigBuckBunny.mp4 -c copy -rtsp_transport tcp -f rtsp {output}
   picam_h264: exec:libcamera-vid -t 0 --inline -o -
   picam_mjpeg: exec:libcamera-vid -t 0 --codec mjpeg -o -
-```
-
-You can change the signal which is used to kill the exec command in the config.
-See `man 7 signal` to get a full list of all the signals.
-The value is case insensitive.
-
-```yaml
-exec:
-  signal: sigkill
+  canon: gphoto2 --capture-movie --stdout#killsignal=sigint
 ```
 
 #### Source: Echo
