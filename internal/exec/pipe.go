@@ -1,4 +1,6 @@
-//go:build !windows,!darwin,!mac
+//go:build !windows
+//go:build !darwin
+//go:build !mac
 
 package exec
 
