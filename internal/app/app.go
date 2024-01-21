@@ -14,13 +14,17 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var Version = "1.8.5"
-var UserAgent = "go2rtc/" + Version
+var (
+	Version   = "1.8.6-4"
+	UserAgent = "go2rtc/" + Version
+)
 
-var ConfigPath string
-var Info = map[string]any{
-	"version": Version,
-}
+var (
+	ConfigPath string
+	Info       = map[string]any{
+		"version": Version,
+	}
+)
 
 func Init() {
 	var confs Config
