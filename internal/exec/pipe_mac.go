@@ -1,13 +1,9 @@
-//go:build !windows,!darwin,!mac
-
 package exec
 
 import (
 	"bufio"
 	"io"
 	"os/exec"
-	"syscall"
-	"time"
 
 	"github.com/AlexxIT/go2rtc/pkg/core"
 )
@@ -33,18 +29,7 @@ type pipeCloser struct {
 func (p pipeCloser) Close() error {
 	finished := make(chan bool)
 
-	if p.params.KillSignal != syscall.SIGKILL {
-		go func() {
-			select {
-			case <-time.After(p.params.KillTimeout):
-				p.cmd.Process.Kill()
-				break
-			case <-finished:
-				break
-			}
-		}()
-	}
-	err := core.Any(p.Closer.Close(), p.cmd.Process.Signal(p.params.KillSignal), p.cmd.Wait())
+	err := core.Any(p.Closer.Close(), p.cmd.Process.Kill(), p.cmd.Wait())
 	finished <- true
 	return err
 }
