@@ -23,10 +23,8 @@ builds:
       - darwin_amd64
       - darwin_arm64
     flags:
-      - trimpath
-    ldflags:
-      - -s
-      - -w
+      - -trimpath
+    ldflags: -s -w
 
 archives:
   - format: tar.gz
