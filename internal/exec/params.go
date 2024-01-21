@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/internal/streams"
 )
 
 func parseParams(s string) (*Params, error) {
