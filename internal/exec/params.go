@@ -1,4 +1,4 @@
-//go:build !(windows || darwin || mac)
+//go:build !(windows || darwin || ios)
 
 package exec
 
