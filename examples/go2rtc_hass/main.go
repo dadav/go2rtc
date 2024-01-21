@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/AlexxIT/go2rtc/internal/api"
-	"github.com/AlexxIT/go2rtc/internal/app"
-	"github.com/AlexxIT/go2rtc/internal/hass"
-	"github.com/AlexxIT/go2rtc/internal/streams"
-	"github.com/AlexxIT/go2rtc/pkg/shell"
+	"github.com/dadav/go2rtc/internal/api"
+	"github.com/dadav/go2rtc/internal/app"
+	"github.com/dadav/go2rtc/internal/hass"
+	"github.com/dadav/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/pkg/shell"
 )
 
 func main() {

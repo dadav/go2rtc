@@ -16,9 +16,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/h264/annexb"
-	"github.com/AlexxIT/go2rtc/pkg/tcp"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/h264/annexb"
+	"github.com/dadav/go2rtc/pkg/tcp"
 	"github.com/pion/rtp"
 )
 

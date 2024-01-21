@@ -3,7 +3,7 @@ package mjpeg
 import (
 	"encoding/json"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/core"
 )
 
 func (c *Client) GetMedias() []*core.Media {
@@ -31,7 +31,7 @@ func (c *Client) GetTrack(media *core.Media, codec *core.Codec) (*core.Receiver,
 }
 
 func (c *Client) Start() error {
-	// https://github.com/AlexxIT/go2rtc/issues/278
+	// https://github.com/dadav/go2rtc/issues/278
 	return c.Handle()
 }
 

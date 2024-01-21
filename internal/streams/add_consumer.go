@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/core"
 )
 
 func (s *Stream) AddConsumer(cons core.Consumer) (err error) {

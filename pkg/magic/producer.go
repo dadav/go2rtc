@@ -6,14 +6,14 @@ import (
 	"errors"
 	"io"
 
-	"github.com/AlexxIT/go2rtc/pkg/aac"
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/flv"
-	"github.com/AlexxIT/go2rtc/pkg/h264/annexb"
-	"github.com/AlexxIT/go2rtc/pkg/magic/bitstream"
-	"github.com/AlexxIT/go2rtc/pkg/magic/mjpeg"
-	"github.com/AlexxIT/go2rtc/pkg/mpegts"
-	"github.com/AlexxIT/go2rtc/pkg/multipart"
+	"github.com/dadav/go2rtc/pkg/aac"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/flv"
+	"github.com/dadav/go2rtc/pkg/h264/annexb"
+	"github.com/dadav/go2rtc/pkg/magic/bitstream"
+	"github.com/dadav/go2rtc/pkg/magic/mjpeg"
+	"github.com/dadav/go2rtc/pkg/mpegts"
+	"github.com/dadav/go2rtc/pkg/multipart"
 )
 
 func Open(r io.Reader) (core.Producer, error) {
@@ -45,7 +45,7 @@ func Open(r io.Reader) (core.Producer, error) {
 	}
 
 	// support MJPEG with trash on start
-	// https://github.com/AlexxIT/go2rtc/issues/747
+	// https://github.com/dadav/go2rtc/issues/747
 	if b, err = rd.Peek(4096); err != nil {
 		return nil, err
 	}

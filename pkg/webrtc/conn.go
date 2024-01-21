@@ -3,7 +3,7 @@ package webrtc
 import (
 	"time"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/core"
 	"github.com/pion/rtcp"
 	"github.com/pion/rtp"
 	"github.com/pion/webrtc/v3"

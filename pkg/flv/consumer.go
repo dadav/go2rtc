@@ -3,9 +3,9 @@ package flv
 import (
 	"io"
 
-	"github.com/AlexxIT/go2rtc/pkg/aac"
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/h264"
+	"github.com/dadav/go2rtc/pkg/aac"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/h264"
 	"github.com/pion/rtp"
 )
 

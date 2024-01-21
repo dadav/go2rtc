@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"regexp"
 
-	"github.com/AlexxIT/go2rtc/pkg/tcp"
+	"github.com/dadav/go2rtc/pkg/tcp"
 	"github.com/expr-lang/expr"
 )
 

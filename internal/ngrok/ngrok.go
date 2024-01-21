@@ -5,9 +5,9 @@ import (
 	"net"
 	"strings"
 
-	"github.com/AlexxIT/go2rtc/internal/app"
-	"github.com/AlexxIT/go2rtc/internal/webrtc"
-	"github.com/AlexxIT/go2rtc/pkg/ngrok"
+	"github.com/dadav/go2rtc/internal/app"
+	"github.com/dadav/go2rtc/internal/webrtc"
+	"github.com/dadav/go2rtc/pkg/ngrok"
 	"github.com/rs/zerolog"
 )
 

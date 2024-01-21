@@ -7,14 +7,14 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/internal/api"
-	"github.com/AlexxIT/go2rtc/internal/api/ws"
-	"github.com/AlexxIT/go2rtc/internal/ffmpeg"
-	"github.com/AlexxIT/go2rtc/internal/streams"
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/magic"
-	"github.com/AlexxIT/go2rtc/pkg/mjpeg"
-	"github.com/AlexxIT/go2rtc/pkg/tcp"
+	"github.com/dadav/go2rtc/internal/api"
+	"github.com/dadav/go2rtc/internal/api/ws"
+	"github.com/dadav/go2rtc/internal/ffmpeg"
+	"github.com/dadav/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/magic"
+	"github.com/dadav/go2rtc/pkg/mjpeg"
+	"github.com/dadav/go2rtc/pkg/tcp"
 	"github.com/rs/zerolog/log"
 )
 

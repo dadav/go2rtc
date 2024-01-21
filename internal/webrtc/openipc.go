@@ -6,8 +6,8 @@ import (
 	"io"
 	"net/url"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/webrtc"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/webrtc"
 	"github.com/gorilla/websocket"
 	pion "github.com/pion/webrtc/v3"
 )

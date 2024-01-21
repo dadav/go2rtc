@@ -2,7 +2,7 @@ package streams
 
 import (
 	"errors"
-	"github.com/AlexxIT/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/core"
 )
 
 func (s *Stream) Play(source string) error {

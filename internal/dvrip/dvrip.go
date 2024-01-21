@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/internal/api"
-	"github.com/AlexxIT/go2rtc/internal/streams"
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/dvrip"
+	"github.com/dadav/go2rtc/internal/api"
+	"github.com/dadav/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/dvrip"
 	"github.com/rs/zerolog/log"
 )
 

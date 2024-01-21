@@ -11,9 +11,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/h264"
-	"github.com/AlexxIT/go2rtc/pkg/iso"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/h264"
+	"github.com/dadav/go2rtc/pkg/iso"
 	"github.com/gorilla/websocket"
 	"github.com/pion/rtp"
 )

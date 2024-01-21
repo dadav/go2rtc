@@ -5,9 +5,9 @@ import (
 	"errors"
 	"io"
 
-	"github.com/AlexxIT/go2rtc/pkg/aac"
-	"github.com/AlexxIT/go2rtc/pkg/bits"
-	"github.com/AlexxIT/go2rtc/pkg/h264/annexb"
+	"github.com/dadav/go2rtc/pkg/aac"
+	"github.com/dadav/go2rtc/pkg/bits"
+	"github.com/dadav/go2rtc/pkg/h264/annexb"
 	"github.com/pion/rtp"
 )
 

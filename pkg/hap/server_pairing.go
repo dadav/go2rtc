@@ -9,10 +9,10 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/AlexxIT/go2rtc/pkg/hap/chacha20poly1305"
-	"github.com/AlexxIT/go2rtc/pkg/hap/ed25519"
-	"github.com/AlexxIT/go2rtc/pkg/hap/hkdf"
-	"github.com/AlexxIT/go2rtc/pkg/hap/tlv8"
+	"github.com/dadav/go2rtc/pkg/hap/chacha20poly1305"
+	"github.com/dadav/go2rtc/pkg/hap/ed25519"
+	"github.com/dadav/go2rtc/pkg/hap/hkdf"
+	"github.com/dadav/go2rtc/pkg/hap/tlv8"
 	"github.com/tadglines/go-pkgs/crypto/srp"
 )
 

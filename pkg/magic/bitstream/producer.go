@@ -5,10 +5,10 @@ import (
 	"errors"
 	"io"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/h264"
-	"github.com/AlexxIT/go2rtc/pkg/h264/annexb"
-	"github.com/AlexxIT/go2rtc/pkg/h265"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/h264"
+	"github.com/dadav/go2rtc/pkg/h264/annexb"
+	"github.com/dadav/go2rtc/pkg/h265"
 	"github.com/pion/rtp"
 )
 

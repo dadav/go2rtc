@@ -4,11 +4,11 @@ import (
 	"errors"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/internal/api"
-	"github.com/AlexxIT/go2rtc/internal/api/ws"
-	"github.com/AlexxIT/go2rtc/internal/streams"
-	"github.com/AlexxIT/go2rtc/pkg/mp4"
-	"github.com/AlexxIT/go2rtc/pkg/tcp"
+	"github.com/dadav/go2rtc/internal/api"
+	"github.com/dadav/go2rtc/internal/api/ws"
+	"github.com/dadav/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/pkg/mp4"
+	"github.com/dadav/go2rtc/pkg/tcp"
 )
 
 func handlerWSHLS(tr *ws.Transport, msg *ws.Message) error {

@@ -4,8 +4,8 @@ import (
 	"io"
 	"net/url"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/mpegts"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/mpegts"
 )
 
 func OpenURL(u *url.URL, body io.ReadCloser) (core.Producer, error) {

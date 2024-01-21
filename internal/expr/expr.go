@@ -3,9 +3,9 @@ package expr
 import (
 	"errors"
 
-	"github.com/AlexxIT/go2rtc/internal/app"
-	"github.com/AlexxIT/go2rtc/internal/streams"
-	"github.com/AlexxIT/go2rtc/pkg/expr"
+	"github.com/dadav/go2rtc/internal/app"
+	"github.com/dadav/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/pkg/expr"
 )
 
 func Init() {

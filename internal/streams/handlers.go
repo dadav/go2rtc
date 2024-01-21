@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/core"
 )
 
 type Handler func(url string) (core.Producer, error)

@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/internal/api"
-	"github.com/AlexxIT/go2rtc/internal/app"
+	"github.com/dadav/go2rtc/internal/api"
+	"github.com/dadav/go2rtc/internal/app"
 	"github.com/rs/zerolog"
 )
 
@@ -172,7 +172,7 @@ func streamsHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		// support {input} templates: https://github.com/AlexxIT/go2rtc#module-hass
+		// support {input} templates: https://github.com/dadav/go2rtc#module-hass
 		if Patch(name, src) == nil {
 			http.Error(w, "", http.StatusBadRequest)
 		}

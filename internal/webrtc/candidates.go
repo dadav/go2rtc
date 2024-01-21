@@ -3,8 +3,8 @@ package webrtc
 import (
 	"net"
 
-	"github.com/AlexxIT/go2rtc/internal/api/ws"
-	"github.com/AlexxIT/go2rtc/pkg/webrtc"
+	"github.com/dadav/go2rtc/internal/api/ws"
+	"github.com/dadav/go2rtc/pkg/webrtc"
 	"github.com/pion/sdp/v3"
 )
 

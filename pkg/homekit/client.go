@@ -8,10 +8,10 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/hap"
-	"github.com/AlexxIT/go2rtc/pkg/hap/camera"
-	"github.com/AlexxIT/go2rtc/pkg/srtp"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/hap"
+	"github.com/dadav/go2rtc/pkg/hap/camera"
+	"github.com/dadav/go2rtc/pkg/srtp"
 	"github.com/pion/rtp"
 )
 

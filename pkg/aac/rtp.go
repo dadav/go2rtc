@@ -3,7 +3,7 @@ package aac
 import (
 	"encoding/binary"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/core"
 	"github.com/pion/rtp"
 )
 

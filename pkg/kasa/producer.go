@@ -9,11 +9,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/AlexxIT/go2rtc/pkg/core"
-	"github.com/AlexxIT/go2rtc/pkg/h264"
-	"github.com/AlexxIT/go2rtc/pkg/h264/annexb"
-	"github.com/AlexxIT/go2rtc/pkg/multipart"
-	"github.com/AlexxIT/go2rtc/pkg/tcp"
+	"github.com/dadav/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/pkg/h264"
+	"github.com/dadav/go2rtc/pkg/h264/annexb"
+	"github.com/dadav/go2rtc/pkg/multipart"
+	"github.com/dadav/go2rtc/pkg/tcp"
 	"github.com/pion/rtp"
 )
 

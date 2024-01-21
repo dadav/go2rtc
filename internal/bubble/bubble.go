@@ -1,9 +1,9 @@
 package bubble
 
 import (
-	"github.com/AlexxIT/go2rtc/internal/streams"
-	"github.com/AlexxIT/go2rtc/pkg/bubble"
-	"github.com/AlexxIT/go2rtc/pkg/core"
+	"github.com/dadav/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/pkg/bubble"
+	"github.com/dadav/go2rtc/pkg/core"
 )
 
 func Init() {

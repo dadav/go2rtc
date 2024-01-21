@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/AlexxIT/go2rtc/internal/api"
-	"github.com/AlexxIT/go2rtc/internal/streams"
-	"github.com/AlexxIT/go2rtc/internal/webrtc"
+	"github.com/dadav/go2rtc/internal/api"
+	"github.com/dadav/go2rtc/internal/streams"
+	"github.com/dadav/go2rtc/internal/webrtc"
 )
 
 func apiOK(w http.ResponseWriter, r *http.Request) {

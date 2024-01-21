@@ -4,7 +4,7 @@ import (
 	"encoding/base64"
 	"testing"
 
-	"github.com/AlexxIT/go2rtc/pkg/hap"
+	"github.com/dadav/go2rtc/pkg/hap"
 	"github.com/stretchr/testify/require"
 )
 
